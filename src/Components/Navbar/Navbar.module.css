@@ -1,12 +1,5 @@
 
-:root {
-    --icon-color-hover: #150d49;
-    --icon-color: #4547e0;
-    --navbar-background: rgb(255,255,255);
-    --navbar-button-border-hover: rgb(38,36,36);
-    --navbar-button-border: rgb(217,217,217);
-    --navbar-button-text: rgb(38,38,38);
-}
+
 
 .navBarWrapper {
     display: flex;
@@ -30,6 +23,7 @@
 
 .navBarContainer {
     width: 100%;
+    max-width: 1600px;
     height: 100%;
     color: black;
     display: flex;
@@ -65,7 +59,7 @@
     width: 20%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .siteNavigator li {

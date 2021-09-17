@@ -11,13 +11,13 @@ a {
     font-family: "Poppins", sans-serif;
 }
 
-
-.Page {
-    width: 100vw;
-    height: 65vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+:root {
+    --icon-color-hover: #150d49;
+    --icon-color: #4547e0;
+    --navbar-background: rgb(255,255,255);
+    --navbar-button-border-hover: rgb(38,36,36);
+    --navbar-button-border: rgb(217,217,217);
+    --navbar-button-text: rgb(38,38,38);
 }
 
 
@@ -37,8 +37,19 @@ a {
     width: 100vw;
     height: 90vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+}
+
+
+.Main {
+
+}
+
+
+.Footer {
+    width: 100vw;
+    height: 20vh;
 }
 
 
