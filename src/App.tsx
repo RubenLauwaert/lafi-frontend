@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React from 'react';
 import mainStyles from './Main.module.css'
-import './App.css';
+import './App';
 import { HomePage } from "./Pages/HomePage/HomePage";
 import { RegisterPage } from "./Pages/RegisterPage/RegisterPage";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";

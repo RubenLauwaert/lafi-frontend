@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "../AuthForm.module.css";
 import '../authform.css'
-import googleIcon from "../../../Assets/LoginPage/google_icon.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Card, Container } from "react-bootstrap";
+import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { login } from "../../../app/userStore";
+import { RootState } from "../../../app/store";
 
 export const LoginForm = () => {
+
+
+    const user = useAppSelector((state) => state.userReducer)
+    const dispatch = useAppDispatch()
+
+
     return (
         <div className={styles.oauthWrapper}>
             <Container className="my-5 mx-5 w-50">

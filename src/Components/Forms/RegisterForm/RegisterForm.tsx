@@ -13,7 +13,7 @@ export const RegisterForm = () => {
                     <Form>
                         <Form.Group className="mb-3" controlId="formUsername">
                             <Form.Label className="fw-light fs-5">Name</Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control type="text" placeholder="User123" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEmail">
                             <Form.Label className="fw-light fs-5">Email</Form.Label>
