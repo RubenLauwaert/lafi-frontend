@@ -12,12 +12,14 @@ a {
 }
 
 :root {
+    --background-color-1: rgb(248,248,248);
     --icon-color-hover: #150d49;
     --icon-color: #4547e0;
     --navbar-background: rgb(255,255,255);
     --navbar-button-border-hover: rgb(38,36,36);
     --navbar-button-border: rgb(217,217,217);
     --navbar-button-text: rgb(38,38,38);
+    --loginform-button-background: rgb(0,0,0);
 }
 
 
@@ -34,6 +36,7 @@ a {
 }
 
 .Page {
+    background-color:var(--background-color-1);
     width: 100vw;
     height: 90vh;
     display: flex;
