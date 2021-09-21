@@ -6,9 +6,9 @@ import { Form, Button, Card, Container } from "react-bootstrap";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { login } from "../../../app/userStore";
 import { RootState } from "../../../app/store";
+import * as yup from "yup";
 
 export const LoginForm = () => {
-    const user = useAppSelector((state) => state.userReducer);
     const dispatch = useAppDispatch();
 
     const [email, setEmail] = useState("");
@@ -17,6 +17,8 @@ export const LoginForm = () => {
     const handleLogin = async (e: any) => {
         await dispatch(login({ email, password }));
     };
+
+    // Input Validation
 
     return (
         <div className={styles.oauthWrapper}>
@@ -41,7 +43,7 @@ export const LoginForm = () => {
                                 {"Invalid Email"}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <Form.Group controlId="formPassword">
+                        <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label className="fw-light fs-5">
                                 Password
                             </Form.Label>
