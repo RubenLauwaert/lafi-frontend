@@ -1,4 +1,5 @@
 .custom-login-button {
+    margin-top: 1rem !important;
     background-color: var(--loginform-button-background) !important;
     border-color: var(--loginform-button-background) !important;
     box-shadow: rgb(0 0 0 / 30%) 0px 2px 12px !important;

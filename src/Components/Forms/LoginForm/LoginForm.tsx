@@ -7,23 +7,25 @@ import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { login } from "../../../app/userStore";
 import { RootState } from "../../../app/store";
 import * as yup from "yup";
+import {RiErrorWarningLine} from 'react-icons/ri'
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch();
 
-    const [loginError, setLoginError] = useState<string | null>(null);
+    const [loginErrors, setLoginErrors] = useState<Array<string>>([]);
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
     const handleLogin = async (e: any) => {
         loginSchema
-            .validate({ email: email, password: password })
+            .validate({ email: email, password: password }, {abortEarly: false})
             .then((valid) => {
-                setLoginError(null);
+                setLoginErrors([]);
                 dispatch(login({ email, password }));
             })
             .catch((error: yup.ValidationError) => {
-                setLoginError(error.message);
+                console.log(error.errors)
+                setLoginErrors(error.errors);
             });
     };
 
@@ -35,7 +37,7 @@ export const LoginForm = () => {
             .required("Email is required."),
         password: yup
             .string()
-            .min(8, "Password must consist of minimum 8 characters.")
+            .min(6, "Password must consist of minimum 6 characters.")
             .required("Password is required."),
     });
 
@@ -71,7 +73,12 @@ export const LoginForm = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Group>
-                        <Form.Text className="mb-5">{loginError}</Form.Text>
+                        {loginErrors.map((error, index) => {
+                            return (<div key={index} style={ {color: 'rgb(179,58,58)'}}>
+                                    <RiErrorWarningLine/>
+                                    <Form.Text style={ {color: 'rgb(179,58,58)'}} className="mb-5">{" " + error}</Form.Text>
+                                </div>)
+                        })}
                     </Form>
                     <Button
                         type="submit"
