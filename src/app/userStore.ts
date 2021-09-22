@@ -19,10 +19,10 @@ export const login = createAsyncThunk(
         const { email, password } = userData;
         try {
             const response = await fetch(
-              `https://api.lafi.be/login`,
+              `http://localhost:5000/login`,
               {
                 method: "POST",
-                mode: 'no-cors',
+                mode: 'cors',
                 headers: {
                   Accept: "application/json",
                   "Content-Type": "application/json",
