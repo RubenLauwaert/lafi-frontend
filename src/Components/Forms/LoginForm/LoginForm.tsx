@@ -11,14 +11,33 @@ import * as yup from "yup";
 export const LoginForm = () => {
     const dispatch = useAppDispatch();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState<string | null>(null);
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
     const handleLogin = async (e: any) => {
-        await dispatch(login({ email, password }));
+        loginSchema
+            .validate({ email: email, password: password })
+            .then((valid) => {
+                setLoginError(null);
+                dispatch(login({ email, password }));
+            })
+            .catch((error: yup.ValidationError) => {
+                setLoginError(error.message);
+            });
     };
 
     // Input Validation
+    let loginSchema = yup.object().shape({
+        email: yup
+            .string()
+            .email("Must be a valid email.")
+            .required("Email is required."),
+        password: yup
+            .string()
+            .min(8, "Password must consist of minimum 8 characters.")
+            .required("Password is required."),
+    });
 
     return (
         <div className={styles.oauthWrapper}>
@@ -36,14 +55,13 @@ export const LoginForm = () => {
                                 type="email"
                                 placeholder="name@example.com"
                                 value={email}
-                                isInvalid={true}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {"Invalid Email"}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formPassword">
+                        <Form.Group className="mb-1" controlId="formPassword">
                             <Form.Label className="fw-light fs-5">
                                 Password
                             </Form.Label>
@@ -53,6 +71,7 @@ export const LoginForm = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Group>
+                        <Form.Text className="mb-5">{loginError}</Form.Text>
                     </Form>
                     <Button
                         type="submit"
